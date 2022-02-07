@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+   <!-- for showing on my portal page -->
+    <template id="portal_my_home_estate_property" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Properties</t>
+                <t t-set="url" t-value="'/my/properties'"></t>
+                <t t-set="placeholder_count" t-value="'total_properties'"></t>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- list view for properties -->
+    <template id="portal_my_properties">
+        <t t-call="portal.portal_layout">
+            <t t-if="properties" t-call="portal.portal_table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Expected Price</th>
+                    </tr>
+                </thead>
+                <t t-foreach="properties" t-as="property">
+                    <tr>
+                        <td><t t-esc="property.name"/></td>
+                        <td><t t-esc="property.expected_price"/></td>
+                    </tr>
+                </t>
+            </t>
+        </t>
+    </template>
+    <!--Templete for property view-->
+    <template id="property_portal_view">
+        <t call="portal.portal_layout">
+            <span>hello world from property</span>
+        </t>
+
+    </template>
+
+
+    <!-- for breadcrumbs -->
+    <template id="portal_my_home_estate_breadcrumbs" inherit_id="portal.portal_breadcrumbs">
+      <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'my_properties'" t-attf-class="breadcrumbs-item">
+               <a> / Property</a>
+            </li>
+      </xpath>
+       
+    </template>
+
+
+</odoo>
+
+

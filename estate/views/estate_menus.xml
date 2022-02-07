@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding ="utf-8"?>
+<odoo>
+	
+	
+    <record id="real_estate_properties_action" model="ir.actions.act_window">
+	    <field name="name">property</field>
+	    <field name="res_model">estate.property</field>
+	    <field name="view_mode">tree,form,search,graph,pivot,kanban</field> 
+	    <field name="context">{'search_default_property_search' :1}</field>   
+   
+   </record>
+
+	<record id="real_estate_offer_action" model="ir.actions.act_window">
+	    <field name="name">offers</field>
+	    <field name="res_model">estate.property.offer</field>
+	    <field name="view_mode">tree,form,search</field>    
+   </record>
+
+	<record id="real_estate_myproperty_action" model="ir.actions.act_window">
+	    <field name="name">properties</field>
+	    <field name="res_model">estate.property.myproperty</field>
+		<field name="view_mode">tree,form,search,calendar,graph,pivot,gantt,kanban</field> 
+		<field name="context">{'search_default_my_property_search':1 ,'is_myproperty': True}</field> 
+ 
+
+
+	</record>
+	
+	
+    
+
+  <record id="real_estate_property_type_action" model="ir.actions.act_window">
+	    <field name="name">properties type</field>
+	    <field name="res_model">estate.property</field>
+	    <field name="view_mode">tree,form</field>    
+   </record>
+
+   <record id="estate_property_accepted_offer_action" model="ir.actions.act_window">
+        <field name="name">estate.property.accepted.offer.action</field>
+        <field name="res_model">estate.property.offer</field>
+        <field name="domain">[('status','=','accepted')]</field>
+        <field name="context">{'default_property_id':active_id}</field>
+        <field name="view_mode">tree,kanban</field>
+    </record>
+
+   
+	
+	<menuitem id="menu_real_estate_root" name="Real Estate">
+	    <menuitem id="menu_real_estate_advertisments" name="Advertisments">
+	     	<menuitem id="menu_real_estate_action" action="real_estate_properties_action"/>
+		 	<menuitem id="menu_real_offer_action" action="real_estate_offer_action"/>
+	    </menuitem>
+	  
+	</menuitem>
+
+	<menuitem id="menu_real_estate_property_type" name="Settings" parent="menu_real_estate_root">
+	    <menuitem id="menu_real_estate_property_type_action" action="real_estate_property_type_action"/>
+	</menuitem>
+	  
+	<menuitem id="menu_real_estate_myproperty" name="myproperty" parent="menu_real_estate_root">
+	    <menuitem id="menu_real_myproperty_action" action="real_estate_myproperty_action"/>
+	</menuitem>
+       
+
+	  
+	 
+</odoo> 

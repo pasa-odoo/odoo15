@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="index">
+        <!-- <title>My Estate</title>
+        <h1>page...</h1>
+        <t t-foreach="name" t-as="n">
+            <i><t t-esc="n"/></i> 
+         </t>-->
+
+
+        <t t-foreach="properties" t-as="p">
+            <!-- <i><t t-esc="p.name"/></i> -->
+        </t>
+
+         <t t-call="website.layout">
+            <t t-set="title">My Estate</t>
+                <div class= "oe_structure">
+                    <div class = "container">
+                        <table class="table">
+                            <tr>
+                                <!-- <th>Reference No </th> -->
+                                <th>Name</th>
+                                <th>Expected Price </th>
+                            </tr>
+                            <t t-foreach="properties" t-as="record">
+                                                <tr>
+                                    <!-- <td><t t-esc="record.ref_seq"/></td> -->
+                                    <td><t t-esc="record.name"/></td>
+                                    <td><t t-esc="record.expected_price"/></td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                </div>
+            </t>
+            <!-- <t t-if="p.name" t-out="p.name"/>
+            <t t-else=""> No Name ..... </t> -->
+            
+            <!-- <tr                 t-attf-style="font-weight: bold;#{sequence % 2 == 0 and 'background: grey;' or ''}">
+                    <td><t t-out="sequence" /></td>
+                    <td><t t-out="p.name" /></td>
+                    <td>
+                        <t t-if="p.description" t-out="p.description" />
+                        <t t-else="">No Description Available</t>
+                    </td>
+                    <td><span t-field="p.state"/></td>
+            </tr>
+         -->
+    </template>
+
+</odoo>
+
+
